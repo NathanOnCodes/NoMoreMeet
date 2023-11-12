@@ -1,6 +1,5 @@
 "use client";
-import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import ButtonNavigate from "../components/button";
+import { useForm } from "react-hook-form";
 
 function Form() {
   const {
@@ -35,7 +34,6 @@ function Form() {
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Calcule o seu Meet
         </h2>
-        <ButtonNavigate url={'meet'}/>
       </div>
       <form
         onSubmit={handleSubmit(onSubmit, onError)}
