@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
               <Link href={"/form"}>
                 <li className="hover:text-black"> Calculadora </li>
               </Link>
-              <Link href="/"> <li className="hover:text-black"> Resultados </li> </Link>
+              <Link href="/meets"> <li className="hover:text-black"> Resultados </li> </Link>
             </ul>
           </div>
         </header>

@@ -1,27 +1,36 @@
 "use client";
+import { redirect, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 function Form() {
+  const router =  useRouter();
   const {
-    handleSubmit,
     register,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      name: "Nathan",
-      role: "Desenvolvedor",
-      valorHora: "70",
-      integrantes: "4",
-    },
-  });
+  } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (e) => {
+    const { nome, cargo, valorHora, integrantes } = e;
+    console.log(e);
+    const res = await fetch("/api/meet", {
+      method: "POST",
+      body: JSON.stringify({
+        nome,
+        cargo,
+        valorHora,
+        integrantes,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    const data = await res.json();
     console.log(data);
+    router.push(`/`);
   };
 
   const onError = (errors) => console.log(errors);
 
-  //console.log(register("name"));
 
   return (
     <div className="isolate bg-white px-6 py-2 sm:py-4 lg:px-8">
@@ -36,7 +45,7 @@ function Form() {
         </h2>
       </div>
       <form
-        onSubmit={handleSubmit(onSubmit, onError)}
+        onSubmit={(onSubmit, onError)}
         className="mx-auto mt-8 max-w-xl sm:mt-8"
       >
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -49,7 +58,7 @@ function Form() {
             </label>
             <div className="mt-2.5">
               <input
-                {...register("name", {
+                {...register("nome", {
                   required: "Nome é requerido.",
                   minLength: {
                     value: 3,
@@ -57,7 +66,7 @@ function Form() {
                   },
                 })}
                 type="text"
-                name="name"
+                name="nome"
                 autoComplete="given-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -75,7 +84,7 @@ function Form() {
             </label>
             <div className="mt-2.5">
               <input
-                {...register("role", {
+                {...register("cargo", {
                   required: "Cargo é requerido.",
                   minLength: {
                     value: 3,
@@ -83,7 +92,7 @@ function Form() {
                   },
                 })}
                 type="text"
-                name="role"
+                name="cargo"
                 autoComplete="family-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />

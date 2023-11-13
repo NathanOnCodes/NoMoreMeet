@@ -1,4 +1,4 @@
-import ButtonNavigate from '@/components/button'
+import ButtonNavigate from '../components/button'
 export default function HomePage() {
   return (
     <>
