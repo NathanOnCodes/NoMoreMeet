@@ -11,6 +11,7 @@ para que o usuário escolhe uma abordagem com melhor custo benefício.
 - Igor Gonçalves
 - Gabriel Florindo
 - Estêvão da Silva
+- Hugo Ribeiro
 
 ## Uso do app:
 - Preencher o formulário para que seja feito o calculo
