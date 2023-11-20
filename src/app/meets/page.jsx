@@ -10,9 +10,11 @@ async function MeetsPage() {
   return (
     <>
   <h1 className="text-2xl text-center font-italic mb-4 ">Caso sua reunião custe mais que R$ 300, sera classificada como "Não vale a pena" caso contrário "Vale a pena". </h1>
-      {meets && (meets.map(meet => 
-        <Card meet={meet} key={meet.id} arrow={destroyer}/>
-      ))}
+      {meets && (meets.map(meet => (
+        <section key={meet.id} className="p-4">
+          <Card  meet={meet} key={meet.id} arrow={destroyer}/>
+        </section>
+      )))}
     </>
   )
 }

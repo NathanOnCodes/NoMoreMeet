@@ -14,9 +14,13 @@ function FormPostMeet() {
     });
   }
   return (
-      <>
-        <Form arrow={create}/>
-      </>
+
+    <section className="p-6 flex flex-col align-middle justify-center bg-gray-600">
+      <Form arrow={create}/>
+    </section>
+        
+    
+      
   );  
 }
 

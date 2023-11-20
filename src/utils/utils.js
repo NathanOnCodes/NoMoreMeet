@@ -2,7 +2,9 @@ import { prisma } from "@/libs/prisma"
 
 export async function createMeet(arg){
     return await prisma.meet.create({
-        data: arg
+        data: {
+            ...arg,
+        }
     })
 }
 
